@@ -1,0 +1,8 @@
+= simple_form_for(@deal, :url => deals_path, :html => {:class => 'form-horizontal', :method => :post, :novalidate => false}) do |f|
+  %fieldset.well
+    = f.input :type, as: :select, collection: ["Room", "Bike", "Cab"], required: true, input_html: {class: "input-xlarge", required: "required"}
+    = f.input :amount, :required => true, input_html: {class: "input-xlarge", required: "required"}
+    = f.input :from, as: :string, input_html: {id: "date_from_field", required: "required"}
+    = f.input :to, as: :string, input_html: {id: "date_to_field", required: "required"}
+    = f.input :description, as: :text,  required: true, input_html: {class: "input-xlarge", rows: "5", required: "required"}   
+    = f.button :submit, 'Create', :class => 'btn-primary'

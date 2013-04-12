@@ -4,7 +4,7 @@ gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem "simple_form", ">= 2.0.4"
 
 
 # Gems used only for assets and not required
