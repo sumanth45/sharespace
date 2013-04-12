@@ -1,0 +1,32 @@
+%div
+  %ul.breadcrumb
+    %li
+      %a{:href => clients_path} Clients
+      %span.divider /
+    %li
+      %a{:href => client_path(@client)} #{@client.name}
+      %span.divider /
+    %li
+      %a{:href => products_path(:cid => @client)} Products
+      %span.divider /
+    %li.active New
+
+= simple_form_for(@product, :url => products_path, :html => {:class => 'form-horizontal', :method => :post, :novalidate => false}) do |f|
+  %fieldset.well
+    = display_base_errors @product
+    = f.input :name, required: true, autofocus: true, input_html: {class: "input-xlarge", required: "required"}
+    = f.input :sku, :required => true, input_html: {class: "input-xlarge", required: "required"}
+    = f.simple_fields_for :product_price do |p|
+      = p.input :price, required: true, input_html: {class: "input-xlarge", required: "required"}
+      = p.input :discount, input_html: {class: "input-xlarge", required: "required"}
+      = p.input :valid_from, as: :string, input_html: {id: "date_from_field", required: "required"}
+      = p.input :valid_to, as: :string, input_html: {id: "date_to_field", required: "required"}
+      = hidden_field_tag "product[product_price][client_id]", @client.id
+    = f.input :description, as: :text,  required: true, input_html: {class: "input-xlarge", rows: "5", required: "required"}   
+    = f.input :tag_list, input_html: {class: "input-xlarge", rows: "5", required: "required"}   
+    = f.input :photo, input_html: {required: "required"}    
+    = f.input :status, as: :boolean, required: true, input_html: {checked: "checked"}, inline_label: "(Uncheck this checkbox if you want to disable this product. Disabled products cann't be searchable to clients.)"
+    = hidden_field_tag "product[client_id]", @client.id
+    = f.input :deal_type, as: :boolean, inline_label: "( If it is a daily deal then tick this check box and select the applicable days below, or else uncheck it )"
+    = f.input :days, as: :select, collection: [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], include_blank: false, input_html: {multiple: "multiple", size: 7}
+    = f.button :submit, 'Create', :class => 'btn-primary'

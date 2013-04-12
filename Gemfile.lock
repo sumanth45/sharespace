@@ -177,6 +177,9 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     sexp_processor (4.2.0)
+    simple_form (2.1.0)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -225,6 +228,7 @@ DEPENDENCIES
   rails (= 3.2.12)
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
+  simple_form (>= 2.0.4)
   therubyracer (>= 0.11.3)
   twitter-bootstrap-rails (>= 2.2.4)
   uglifier (>= 1.0.3)
