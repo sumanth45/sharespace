@@ -66,5 +66,9 @@ module Sharespace
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
   end
+
+  APP_ID = '160045257493201'
+  SECRET_CODE =  'c981c780c0a584b749e7d7479c87906f'
 end

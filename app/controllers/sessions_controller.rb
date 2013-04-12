@@ -4,12 +4,14 @@ class SessionsController < ApplicationController
 
   def create
     auth_hash = request.env['omniauth.auth']
+    token = auth_hash['credentials']['token']
     @user = User.find_by_uid_and_email(auth_hash["uid"],auth_hash["info"]["email"])
     if @user.blank?
       @user = User.create(:name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"], :uid => auth_hash["uid"] )
     end
     session[:user_id] = auth_hash["uid"]
-    render :text => auth_hash.inspect
+    client = FbGraph::User.me(token)
+    render :json => client.friends
   end
 
   def destroy

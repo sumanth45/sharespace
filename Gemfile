@@ -53,3 +53,4 @@ gem "omniauth-facebook"
 gem "quiet_assets", ">= 1.0.2", :group => :development
 gem "figaro", ">= 0.6.3"
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
+gem "fb_graph", :require => "fb_graph"
