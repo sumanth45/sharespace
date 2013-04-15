@@ -1,7 +1,9 @@
 class DealsController < ApplicationController
+  layout 'deals'
 
   def index
-    @deals = current_user.deals
+    client = FbGraph::User.me(session[:token])
+    @friends = client.friends
   end
 
   def new
@@ -13,4 +15,5 @@ class DealsController < ApplicationController
     deal.save!
     redirect_to deals_path    
   end
+
 end

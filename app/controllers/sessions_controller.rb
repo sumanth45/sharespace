@@ -9,9 +9,8 @@ class SessionsController < ApplicationController
     if @user.blank?
       @user = User.create(:name => auth_hash["info"]["name"], :email => auth_hash["info"]["email"], :uid => auth_hash["uid"] )
     end
-    session[:user_id] = auth_hash["uid"]
-    client = FbGraph::User.me(token)
-    render :json => client.friends
+    session[:user_id], session[:token] = auth_hash["uid"], token
+    redirect_to deals_path
   end
 
   def destroy

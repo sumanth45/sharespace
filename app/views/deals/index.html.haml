@@ -1,1 +1,12 @@
-<h1>All deals page</h1>
+%ul.column{:style => "width: 920px;"}
+  - @friends.each do |f|
+    / eqblock
+    %li{:style => "width: 230px;"}
+      %img{src: "/assets/home-logo.jpg", style: "position:absolute;margin-left:167px;margin-top:20px;"}
+      %section.block
+        %a{:href => "#"}
+          %img{:alt => "", :src => "#{f.endpoint}/picture"}/
+        %h2
+          %a{:href => "#"}
+            = f.raw_attributes["name"]
+        %p Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor interdum.
